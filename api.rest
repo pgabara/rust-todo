@@ -1,11 +1,32 @@
-GET http://127.0.0.1:9000 HTTP/1.1
+@host = 127.0.0.1
+@port = 9000
+
+@todo_id = da43ca00-e321-4454-aada-280c642ffd6d
+
+GET http://{{host}}:{{port}} HTTP/1.1
 
 ###
 
-POST http://127.0.0.1:9000 HTTP/1.1
+POST http://{{host}}:{{port}} HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Learn Rust!",
-    "done": false
+    "title": "Learn Rust!"
+}
+
+###
+
+GET http://{{host}}:{{port}}/{{todo_id}} HTTP/1.1
+
+###
+
+DELETE http://{{host}}:{{port}}/{{todo_id}} HTTP/1.1
+
+###
+
+PATCH http://{{host}}:{{port}}/{{todo_id}} HTTP/1.1
+content-type: application/json
+
+{
+    "completed": true
 }
